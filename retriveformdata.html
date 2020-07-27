@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function myFunction() 
+		{
+ 			var s = document.getElementsById('name');
+  			var h = document.getElementById('email');
+  			h.insertAdjacentElement('afterend', s);
+		}
+		function loadform() {
+			
+			var name = document.createElement('input');
+			name.setAttribute('type','text');
+			name.setAttribute('id','name');
+			name.setAttribute('placeholder','name');
+
+			name.addEventListener('blur',checkname);
+			
+			function checkname()
+			{
+				// alert(name.value);
+				var n = /^[A-Za-z]+$/;
+
+				if (name.value=="") {
+
+				alert("please enter name");
+
+				} else if(!name.value.match(n)) { alert('enter valid value');
+
+					name.value="";
+
+				 }
+			}
+
+			var email = document.createElement('input');
+			email.setAttribute('type','email');
+			email.setAttribute('id','email');
+			email.setAttribute('placeholder','email');
+			// email.addEventListener('blur',checkemail);
+			
+			
+			var number = document.createElement('input');
+			number.setAttribute('type','number');
+			number.setAttribute('placeholder','number');
+			number.setAttribute('id','num');
+			number.addEventListener('blur',checknumber);
+			function checknumber()
+			{
+				// alert(name.value);
+				var n = /^[0][1-9]\d{9}$|^[1-9]\d{9}$/;	
+
+				if (number.value=="") {
+
+				alert("please enter number");
+
+				} else if(!number.value.match(n)) { alert('enter valid number');
+
+					number.value="";
+
+				 }
+			}
+
+			var submit = document.createElement('input');
+			submit.setAttribute('type','submit');
+
+			submit.addEventListener('click',submitdata);
+
+			function submitdata()
+			{
+				var uname = document.cookie = "name = " + name.value;
+				var unum = document.cookie = "number = " + number.value;
+				var uemail = document.cookie = "email = " + email.value;
+
+				document.write(uname);
+				document.write(unum);
+				document.write(uemail);
+
+			}		
+     		document.body.appendChild(name);
+			document.body.appendChild(number);
+			document.body.appendChild(email);
+			document.body.appendChild(submit);
+			// var d =document.body.appendChild(number);
+			// d.insertBefore(name,email);
+
+		}
+	</script>
+</head>
+
+<body onload="loadform();">
+
+<button onclick="myFunction()">Move span</button>
+
+
+</body>
+</html>

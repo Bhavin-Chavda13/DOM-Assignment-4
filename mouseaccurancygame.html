@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+h2{
+    background: #e3e3e3;
+    padding: 2em;
+    text-align: center;
+}
+
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: black;
+}
+#animate {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  background-color: red;
+}
+
+</style>
+<body>
+<h2>Mouse Accuracy Game</h2>
+<!-- <p><button onclick="myMove()">Click Me</button></p>  -->
+
+<div id ="container">
+  <div id ="animate" onclick="change()"></div>
+</div>
+<div><label>Score:</label>
+  <input type="text" name="score" id="score" value="0" disabled="">
+</div>
+
+<script>
+
+function change()
+{
+ 
+  var elem = document.getElementById("animate");
+  var pos1 = Math.floor((Math.random() * 375) +1);
+  var pos2 = Math.floor((Math.random() * 375) +1);
+  
+  elem.style.top = pos1 +"px";
+  elem.style.left = pos2 +"px";  
+
+}
+  $(document).ready( function(){
+      $('#animate').click( function(){
+        var counter = $('#score').val();
+        counter++;
+        $('#score').val(counter);
+      });
+  });
+    
+</script>
+
+</body>
+</html>
